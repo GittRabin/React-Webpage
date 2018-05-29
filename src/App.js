@@ -40,6 +40,7 @@ nameChangeHandler =(event, id)=>{
   //Try to find index of changing array object
   const personIndex = this.state.persons.findIndex(p=>{return p.id === id});
 
+
   //creating copy of persons array named as person and acessing value of personIndex
     const person = {...this.state.persons[personIndex]};
   //Converting matching id name into target name
@@ -74,7 +75,7 @@ deletePersonHandler =(indexPerson)=>{
               name={person.name}
               age={person.age}
               click={this.deletePersonHandler.bind(this,index)}
-              changed={(event)=>this.nameChangeHandler(event,person.id)} />
+              changed={(event)=>this.nameChangeHandler(event, person.id)} />
             )
 
           })}
@@ -86,7 +87,7 @@ deletePersonHandler =(indexPerson)=>{
       <div className="App">
         <p> This is really awesome </p>
         {/*<button onClick={this.clickEventHandler.bind(this,"Arjun")}> Click Me </button> */}
-        <button onClick={this.personToggleHandler}>Alternate Button </button>  {/* alternate way to bind using anynomous */}
+        <button onClick={this.personToggleHandler}>Show Persons </button>  {/* alternate way to bind using anynomous */}
         {persons}
       </div>
     );
