@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './screen/Person';
+import Persons from './container/Persons';
+import Render from "./container/Render";
 
 
 class App extends Component {
@@ -68,8 +70,13 @@ deletePersonHandler =(indexPerson)=>{
     if(this.state.showPersons){
       persons =(
       <div>
-          {this.state.persons.map((person,index) =>{
-            return(
+      <Persons
+        persons ={this.state.persons}
+        click ={this.deletePersonHandler}
+        changed ={this.nameChangeHandler}  />
+    {/*
+       *  {this.state.persons.map((person,index) =>{
+       *    return(
               <Person
               key={index}
               name={person.name}
@@ -79,15 +86,20 @@ deletePersonHandler =(indexPerson)=>{
             )
 
           })}
+          */}
 
       </div>);
     }
 
     return (
       <div className="App">
-        <p> This is really awesome </p>
+       <Render
+        onClick={this.personToggleHandler}/>
+        {/* <p> This is really awesome </p> */}
         {/*<button onClick={this.clickEventHandler.bind(this,"Arjun")}> Click Me </button> */}
-        <button onClick={this.personToggleHandler}>Show Persons </button>  {/* alternate way to bind using anynomous */}
+        {/* <button onClick={this.personToggleHandler}>Show Persons </button>  */}
+        {/* alternate way to bind using anynomous */}
+
         {persons}
       </div>
     );
